@@ -1,0 +1,3 @@
+INSERT INTO tb_client (name, email, password, login, phone) VALUES ('Willy', 'willygoncalvescampos@gmail.com', '1234', 'willy.goncalves', '37998244737');
+INSERT INTO tb_client (name, email, password, login, phone) VALUES ('Emily', 'emilycamposfaria@gmail.com', '1234', 'emily.campos', '37998244737');
+INSERT INTO tb_client (name, email, password, login, phone) VALUES ('Marcus', 'marcuspaulo@gmail.com', '1234', 'marcus.oliveira', '37998244737');

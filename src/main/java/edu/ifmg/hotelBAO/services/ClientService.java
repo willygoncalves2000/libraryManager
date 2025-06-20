@@ -39,6 +39,7 @@ public class ClientService {
         entity.setName(dto.getName());
         entity.setEmail(dto.getEmail());
         entity.setPhone(dto.getPhone());
+        entity.setLogin(dto.getLogin());
     }
 
 }

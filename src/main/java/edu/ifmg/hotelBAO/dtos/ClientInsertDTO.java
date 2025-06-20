@@ -15,6 +15,9 @@ public class ClientInsertDTO {
     private String email;
 
     @NotBlank
+    private String login;
+
+    @NotBlank
     @Size(min = 2,  max = 50)
     private String password;
 
@@ -56,5 +59,13 @@ public class ClientInsertDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 }

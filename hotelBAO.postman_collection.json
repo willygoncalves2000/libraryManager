@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "ae16fb45-9e1d-468e-8a05-e6e46f7a5de9",
+		"name": "hotelBAO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12324521"
+	},
+	"item": [
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/client",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"name\": \"Willy\",\r\n        \"email\": \"willy.goncalves@virtualjoias.com\",\r\n        \"phone\": \"37998244737\",\r\n        \"login\": \"willy.goncalves.vj\",\r\n        \"password\": \"12345\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/client",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Willy Gonçalves\",\r\n    \"email\": \"willy.goncalves@virtualjoias.com\",\r\n    \"phone\": \"37998244737\",\r\n    \"login\": \"willy.goncalves.vj\",\r\n    \"password\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/client/4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"client",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"name\": \"Willy\",\r\n        \"email\": \"willy.goncalves@virtualjoias.com\",\r\n        \"phone\": \"37998244737\",\r\n        \"login\": \"willy.goncalves.vj\",\r\n        \"password\": \"12345\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/client/4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"client",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Room",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/room",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"room"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"name\": \"Willy\",\r\n        \"email\": \"willy.goncalves@virtualjoias.com\",\r\n        \"phone\": \"37998244737\",\r\n        \"login\": \"willy.goncalves.vj\",\r\n        \"password\": \"12345\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/clients",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Willy Gonçalves\",\r\n    \"email\": \"willy.goncalves@virtualjoias.com\",\r\n    \"phone\": \"37998244737\",\r\n    \"login\": \"willy.goncalves.vj\",\r\n    \"password\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/clients/4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"clients",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"name\": \"Willy\",\r\n        \"email\": \"willy.goncalves@virtualjoias.com\",\r\n        \"phone\": \"37998244737\",\r\n        \"login\": \"willy.goncalves.vj\",\r\n        \"password\": \"12345\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/clients/4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"clients",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

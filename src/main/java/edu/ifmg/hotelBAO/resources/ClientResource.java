@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/clients")
+@RequestMapping(value = "/client")
 public class ClientResource {
 
     @Autowired
@@ -32,4 +32,16 @@ public class ClientResource {
         ClientDTO client = clientService.insert(dto);
         return ResponseEntity.ok().body(client);
     }
+
+    @PutMapping(value = "/{id}", produces = "application/json")
+    public ResponseEntity<ClientDTO> update(@PathVariable long id, @Valid @RequestBody ClientDTO dto) {
+        return ResponseEntity.ok().body(clientService.update(id, dto));
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable long id) {
+        clientService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

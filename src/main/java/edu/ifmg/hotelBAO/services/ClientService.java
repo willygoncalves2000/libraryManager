@@ -7,11 +7,12 @@ import edu.ifmg.hotelBAO.repository.ClientRepository;
 import edu.ifmg.hotelBAO.services.exceptions.DatabaseException;
 import edu.ifmg.hotelBAO.services.exceptions.ResourceNotFound;
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +26,7 @@ public class ClientService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Transactional(readOnly = true)
     public List<ClientDTO> findAll() {
         List<Client> list = repository.findAll();
         return list.stream().map(x -> new ClientDTO(x)).collect(Collectors.toList());

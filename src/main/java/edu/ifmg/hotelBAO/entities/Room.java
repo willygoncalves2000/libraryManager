@@ -35,6 +35,13 @@ public class Room {
         this.imageUrl = dto.getImageUrl();
     }
 
+    public Room(Room entity) {
+        this.id = entity.getId();
+        this.description = entity.getDescription();
+        this.price = entity.getPrice();
+        this.imageUrl = entity.getImageUrl();
+    }
+
     public Long getId() {
         return id;
     }

@@ -8,7 +8,9 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +20,6 @@ public class ClientResource {
 
     @Autowired
     private ClientService service;
-    @Autowired
-    private ClientService clientService;
 
     @GetMapping
     public ResponseEntity<List<ClientDTO>> findAll() {
@@ -29,18 +29,23 @@ public class ClientResource {
 
     @PostMapping(produces = "application/json")
     public ResponseEntity<ClientDTO> insert(@Valid @RequestBody ClientInsertDTO dto) {
-        ClientDTO client = clientService.insert(dto);
-        return ResponseEntity.ok().body(client);
+        ClientDTO client = service.insert(dto);
+        URI uri = ServletUriComponentsBuilder.
+                fromCurrentRequest().
+                path("/{id}").
+                buildAndExpand(client.getId())
+                .toUri();
+        return ResponseEntity.created(uri).body(client);
     }
 
     @PutMapping(value = "/{id}", produces = "application/json")
     public ResponseEntity<ClientDTO> update(@PathVariable long id, @Valid @RequestBody ClientDTO dto) {
-        return ResponseEntity.ok().body(clientService.update(id, dto));
+        return ResponseEntity.ok().body(service.update(id, dto));
     }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable long id) {
-        clientService.delete(id);
+        service.delete(id);
         return ResponseEntity.noContent().build();
     }
 

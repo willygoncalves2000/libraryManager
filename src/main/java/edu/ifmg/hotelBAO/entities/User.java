@@ -1,11 +1,17 @@
 package edu.ifmg.hotelBAO.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 @Entity
-@Table(name = "tb_client")
-public class Client {
+@Table(name = "tb_user")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +24,15 @@ public class Client {
     private String login;
     private String phone;
 
-    public Client(Long id, String name, String email, String password, String login, String phone) {
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore // evita loop ao serializar o UserDTO
+    private List<Stay> stays = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(name = "tb_user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
+    public User(Long id, String name, String email, String password, String login, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -27,7 +41,7 @@ public class Client {
         this.phone = phone;
     }
 
-    public Client() {
+    public User() {
     }
 
     public Long getId() {
@@ -80,7 +94,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
+        return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +

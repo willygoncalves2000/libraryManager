@@ -1,6 +1,5 @@
 package edu.ifmg.hotelBAO.resources;
 
-import edu.ifmg.hotelBAO.dtos.ClientDTO;
 import edu.ifmg.hotelBAO.dtos.RoomDTO;
 import edu.ifmg.hotelBAO.services.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,24 +1,24 @@
 package edu.ifmg.hotelBAO.dtos;
 
-import edu.ifmg.hotelBAO.entities.Client;
+import edu.ifmg.hotelBAO.entities.User;
 
-public class ClientDTO {
+public class UserDTO {
 
     private Long id;
     private String name;
     private String email;
     private String phone;
 
-    public ClientDTO() {}
+    public UserDTO() {}
 
-    public ClientDTO(Long id, String name, String email, String phone) {
+    public UserDTO(Long id, String name, String email, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
     }
 
-    public ClientDTO(Client entity) {
+    public UserDTO(User entity) {
         this.id = entity.getId();
         this.name = entity.getName();
         this.email = entity.getEmail();
@@ -59,7 +59,7 @@ public class ClientDTO {
 
     @Override
     public String toString() {
-        return "ClientDTO{" +
+        return "UserDTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +

@@ -1,9 +1,12 @@
 package edu.ifmg.hotelBAO.dtos;
 
+import edu.ifmg.hotelBAO.entities.Role;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public class ClientInsertDTO {
+import java.util.Set;
+
+public class UserInsertDTO {
 
     private Long id;
 
@@ -20,6 +23,16 @@ public class ClientInsertDTO {
     @NotBlank
     @Size(min = 2,  max = 50)
     private String password;
+
+    private Set<Role> roles;
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
     public Long getId() {
         return id;

@@ -1,14 +1,12 @@
 package edu.ifmg.hotelBAO.services;
 
-import edu.ifmg.hotelBAO.dtos.ClientDTO;
 import edu.ifmg.hotelBAO.dtos.StayDTO;
-import edu.ifmg.hotelBAO.entities.Client;
+import edu.ifmg.hotelBAO.entities.User;
 import edu.ifmg.hotelBAO.entities.Room;
 import edu.ifmg.hotelBAO.entities.Stay;
-import edu.ifmg.hotelBAO.repository.ClientRepository;
+import edu.ifmg.hotelBAO.repository.UserRepository;
 import edu.ifmg.hotelBAO.repository.RoomRepository;
 import edu.ifmg.hotelBAO.repository.StayRepository;
-import edu.ifmg.hotelBAO.resources.ClientResource;
 import edu.ifmg.hotelBAO.services.exceptions.DatabaseException;
 import edu.ifmg.hotelBAO.services.exceptions.ResourceNotFound;
 import jakarta.persistence.EntityNotFoundException;
@@ -27,7 +25,7 @@ public class StayService {
     private StayRepository stayRepository;
 
     @Autowired
-    private ClientRepository clientRepository;
+    private UserRepository userRepository;
 
     @Autowired
     private RoomRepository roomRepository;
@@ -42,11 +40,11 @@ public class StayService {
     @Transactional
     public StayDTO insert(StayDTO dto) {
         Stay stay = new Stay();
-        Client client = clientRepository.findById(dto.getClientId())
+        User user = userRepository.findById(dto.getUserId())
                 .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado"));
         Room room = roomRepository.findById(dto.getRoomId())
                 .orElseThrow(() -> new EntityNotFoundException("Quarto não encontrado"));
-        stay.setClient(client);
+        stay.setUser(user);
         stay.setRoom(room);
         stay.setCheckInDate(dto.getCheckInDate());
         stay.setCheckOutDate(dto.getCheckOutDate());
@@ -59,13 +57,13 @@ public class StayService {
         try {
             Stay entity = stayRepository.getReferenceById(id);
 
-            Client client = clientRepository.findById(dto.getClientId())
-                    .orElseThrow(() -> new ResourceNotFound("Client not found with id: " + dto.getClientId()));
+            User user = userRepository.findById(dto.getUserId())
+                    .orElseThrow(() -> new ResourceNotFound("Client not found with id: " + dto.getUserId()));
 
             Room room = roomRepository.findById(dto.getRoomId())
                     .orElseThrow(() -> new ResourceNotFound("Room not found with id: " + dto.getRoomId()));
 
-            entity.setClient(client);
+            entity.setUser(user);
             entity.setRoom(room);
             entity.setCheckInDate(dto.getCheckInDate());
             entity.setCheckOutDate(dto.getCheckOutDate());

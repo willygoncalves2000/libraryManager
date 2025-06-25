@@ -1,9 +1,9 @@
 package edu.ifmg.hotelBAO.services;
 
-import edu.ifmg.hotelBAO.dtos.ClientDTO;
-import edu.ifmg.hotelBAO.dtos.ClientInsertDTO;
-import edu.ifmg.hotelBAO.entities.Client;
-import edu.ifmg.hotelBAO.repository.ClientRepository;
+import edu.ifmg.hotelBAO.dtos.UserDTO;
+import edu.ifmg.hotelBAO.dtos.UserInsertDTO;
+import edu.ifmg.hotelBAO.entities.User;
+import edu.ifmg.hotelBAO.repository.UserRepository;
 import edu.ifmg.hotelBAO.services.exceptions.DatabaseException;
 import edu.ifmg.hotelBAO.services.exceptions.ResourceNotFound;
 import jakarta.persistence.EntityNotFoundException;
@@ -18,45 +18,45 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ClientService {
+public class UserService {
 
     @Autowired
-    private ClientRepository repository;
+    private UserRepository repository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Transactional(readOnly = true)
-    public List<ClientDTO> findAll() {
-        List<Client> list = repository.findAll();
-        return list.stream().map(x -> new ClientDTO(x)).collect(Collectors.toList());
+    public List<UserDTO> findAll() {
+        List<User> list = repository.findAll();
+        return list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
     }
 
     @Transactional
-    public ClientDTO insert(ClientInsertDTO dto) {
-        Client entity = new Client();
+    public UserDTO insert(UserInsertDTO dto) {
+        User entity = new User();
         copyInsertDtoToEntity(dto, entity);
         entity.setPassword(passwordEncoder.encode(dto.getPassword()));
-        Client saved = repository.save(entity);
-        return new ClientDTO(saved);
+        User saved = repository.save(entity);
+        return new UserDTO(saved);
     }
 
     @Transactional
-    public ClientDTO update(Long id, ClientDTO dto) {
+    public UserDTO update(Long id, UserDTO dto) {
         try {
-            Client entity = repository.getReferenceById(id); // Verifica se existe
+            User entity = repository.getReferenceById(id); // Verifica se existe
             copyDtoToEntity(dto, entity);                    // Traz os novos dados
             entity = repository.save(entity);
-            return new ClientDTO(entity);
+            return new UserDTO(entity);
         } catch (EntityNotFoundException e) {
-            throw new ResourceNotFound("Client not found with id " + id);
+            throw new ResourceNotFound("User not found with id " + id);
         }
     }
 
     @Transactional
     public void delete(Long id) {
         if(!repository.existsById(id)) {
-            throw new ResourceNotFound("Client not found with id " + id);
+            throw new ResourceNotFound("User not found with id " + id);
         }
         try {
             repository.deleteById(id);
@@ -65,14 +65,14 @@ public class ClientService {
         }
     }
 
-    private void copyDtoToEntity(ClientDTO dto, Client entity) {
+    private void copyDtoToEntity(UserDTO dto, User entity) {
         entity.setName(dto.getName());
         entity.setEmail(dto.getEmail());
         entity.setPhone(dto.getPhone());
         entity.setLogin(entity.getLogin());
     }
 
-    private void copyInsertDtoToEntity(ClientInsertDTO dto, Client entity) {
+    private void copyInsertDtoToEntity(UserInsertDTO dto, User entity) {
         entity.setName(dto.getName());
         entity.setEmail(dto.getEmail());
         entity.setPhone(dto.getPhone());

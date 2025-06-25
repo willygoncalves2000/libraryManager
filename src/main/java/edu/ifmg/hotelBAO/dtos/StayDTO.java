@@ -7,16 +7,16 @@ import java.time.LocalDate;
 public class StayDTO {
 
     private Long id;
-    private Long clientId;
+    private Long userId;
     private Long roomId;
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
 
     public StayDTO() {}
 
-    public StayDTO(Long id, Long clientId, Long roomId, LocalDate checkInDate, LocalDate checkOutDate) {
+    public StayDTO(Long id, Long userId, Long roomId, LocalDate checkInDate, LocalDate checkOutDate) {
         this.id = id;
-        this.clientId = clientId;
+        this.userId = userId;
         this.roomId = roomId;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
@@ -24,7 +24,7 @@ public class StayDTO {
 
     public StayDTO(Stay entity) {
         this.id = entity.getId();
-        this.clientId = entity.getClient().getId();
+        this.userId = entity.getUser().getId();
         this.roomId = entity.getRoom().getId();
         this.checkInDate = entity.getCheckInDate();
         this.checkOutDate = entity.getCheckOutDate();
@@ -38,12 +38,12 @@ public class StayDTO {
         this.id = id;
     }
 
-    public Long getClientId() {
-        return clientId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public Long getRoomId() {

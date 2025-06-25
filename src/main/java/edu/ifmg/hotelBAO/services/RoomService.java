@@ -1,8 +1,6 @@
 package edu.ifmg.hotelBAO.services;
 
-import edu.ifmg.hotelBAO.dtos.ClientDTO;
 import edu.ifmg.hotelBAO.dtos.RoomDTO;
-import edu.ifmg.hotelBAO.entities.Client;
 import edu.ifmg.hotelBAO.entities.Room;
 import edu.ifmg.hotelBAO.repository.RoomRepository;
 import edu.ifmg.hotelBAO.services.exceptions.DatabaseException;

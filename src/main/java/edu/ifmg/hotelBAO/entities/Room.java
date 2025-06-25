@@ -1,9 +1,12 @@
 package edu.ifmg.hotelBAO.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.ifmg.hotelBAO.dtos.RoomDTO;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,6 +19,12 @@ public class Room {
     private String description;
     private BigDecimal price;
     private String imageUrl;
+
+    @OneToMany(mappedBy = "room")
+    @JsonIgnore // evita loop ao serializar o RoomDTO
+    // Se nao ignorar o campo stays, e Stay tiver Cient e Room como propriedades (como é o caso),
+    // vai entrar em loop infinito ao serializar Client -> Stay -> Client -> Stay...
+    private List<Stay> stays = new ArrayList<>();
 
     public Room() {
 

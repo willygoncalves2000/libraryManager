@@ -13,8 +13,8 @@ public class Stay {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "room_id")
@@ -25,9 +25,9 @@ public class Stay {
 
     public Stay() {}
 
-    public Stay(Long id, Client client, Room room, LocalDate checkInDate, LocalDate checkOutDate) {
+    public Stay(Long id, User user, Room room, LocalDate checkInDate, LocalDate checkOutDate) {
         this.id = id;
-        this.client = client;
+        this.user = user;
         this.room = room;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
@@ -35,7 +35,7 @@ public class Stay {
 
     public Stay(Stay stay) {
         this.id = stay.id;
-        this.client = stay.client;
+        this.user = stay.user;
         this.room = stay.room;
         this.checkInDate = stay.checkInDate;
         this.checkOutDate = stay.checkOutDate;
@@ -49,12 +49,12 @@ public class Stay {
         this.id = id;
     }
 
-    public Client getClient() {
-        return client;
+    public User getUser() {
+        return user;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Room getRoom() {
@@ -85,7 +85,7 @@ public class Stay {
     public String toString() {
         return "Stay{" +
                 "id=" + id +
-                ", client=" + client +
+                ", user=" + user +
                 ", room=" + room +
                 ", checkInDate=" + checkInDate +
                 ", checkOutDate=" + checkOutDate +

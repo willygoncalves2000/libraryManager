@@ -1,9 +1,8 @@
 package edu.ifmg.hotelBAO.resources;
 
-import edu.ifmg.hotelBAO.dtos.ClientDTO;
-import edu.ifmg.hotelBAO.dtos.ClientInsertDTO;
-import edu.ifmg.hotelBAO.entities.Client;
-import edu.ifmg.hotelBAO.services.ClientService;
+import edu.ifmg.hotelBAO.dtos.UserDTO;
+import edu.ifmg.hotelBAO.dtos.UserInsertDTO;
+import edu.ifmg.hotelBAO.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,35 +10,34 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/client")
-public class ClientResource {
+@RequestMapping(value = "/user")
+public class UserResource {
 
     @Autowired
-    private ClientService service;
+    private UserService service;
 
     @GetMapping
-    public ResponseEntity<List<ClientDTO>> findAll() {
-        List<ClientDTO> list = service.findAll();
+    public ResponseEntity<List<UserDTO>> findAll() {
+        List<UserDTO> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
 
     @PostMapping(produces = "application/json")
-    public ResponseEntity<ClientDTO> insert(@Valid @RequestBody ClientInsertDTO dto) {
-        ClientDTO client = service.insert(dto);
+    public ResponseEntity<UserDTO> insert(@Valid @RequestBody UserInsertDTO dto) {
+        UserDTO user = service.insert(dto);
         URI uri = ServletUriComponentsBuilder.
                 fromCurrentRequest().
                 path("/{id}").
-                buildAndExpand(client.getId())
+                buildAndExpand(user.getId())
                 .toUri();
-        return ResponseEntity.created(uri).body(client);
+        return ResponseEntity.created(uri).body(user);
     }
 
     @PutMapping(value = "/{id}", produces = "application/json")
-    public ResponseEntity<ClientDTO> update(@PathVariable long id, @Valid @RequestBody ClientDTO dto) {
+    public ResponseEntity<UserDTO> update(@PathVariable long id, @Valid @RequestBody UserDTO dto) {
         return ResponseEntity.ok().body(service.update(id, dto));
     }
 

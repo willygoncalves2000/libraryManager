@@ -26,7 +26,7 @@ public class UserResource {
         List<UserDTO> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
-    
+
     @PostMapping(produces = "application/json")
     public ResponseEntity<UserDTO> insert(@Valid @RequestBody UserInsertDTO dto) {
         UserDTO user = service.insert(dto);

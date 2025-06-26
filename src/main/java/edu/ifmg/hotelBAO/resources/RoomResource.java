@@ -4,6 +4,7 @@ import edu.ifmg.hotelBAO.dtos.RoomDTO;
 import edu.ifmg.hotelBAO.services.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -23,6 +24,7 @@ public class RoomResource {
         return ResponseEntity.ok().body(list);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<RoomDTO> insert(@RequestBody RoomDTO dto) {
         RoomDTO room = service.insert(dto);
@@ -30,12 +32,14 @@ public class RoomResource {
         return ResponseEntity.created(uri).body(room);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PutMapping(value = "/{id}")
     public ResponseEntity<RoomDTO> update(@PathVariable Long id, @RequestBody RoomDTO dto) {
         RoomDTO room = service.update(id, dto);
         return ResponseEntity.ok().body(room);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<RoomDTO> delete(@PathVariable Long id) {
         service.delete(id);

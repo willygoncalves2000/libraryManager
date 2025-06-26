@@ -1,13 +1,21 @@
 package edu.ifmg.hotelBAO.dtos;
 
 import edu.ifmg.hotelBAO.entities.User;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class UserDTO {
 
     private Long id;
+    @NotNull(message = "Campo obrigatório")
     private String name;
+    @Email(message = "Favor entrar com um email válido")
     private String email;
     private String phone;
+    Set<RoleDTO> roles = new HashSet<>();
 
     public UserDTO() {}
 
@@ -19,10 +27,11 @@ public class UserDTO {
     }
 
     public UserDTO(User entity) {
-        this.id = entity.getId();
-        this.name = entity.getName();
-        this.email = entity.getEmail();
-        this.phone = entity.getPhone();
+        id = entity.getId();
+        name = entity.getName();
+        email = entity.getEmail();
+        phone = entity.getPhone();
+        entity.getRoles().forEach(role -> this.roles.add(new RoleDTO(role)));
     }
 
     public Long getId() {
@@ -55,6 +64,15 @@ public class UserDTO {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Set<RoleDTO> getRoles() {
+        return roles;
+    }
+
+
+    public void setRoles(Set<RoleDTO> roles) {
+        this.roles = roles;
     }
 
     @Override

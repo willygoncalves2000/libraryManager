@@ -1,4 +1,4 @@
-package edu.ifmg.hotelBAO.config;
+// package edu.ifmg.hotelBAO.config;
 
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
-@Configuration
+/* @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
@@ -38,3 +38,4 @@ public class SecurityConfig {
 
 
 }
+*/

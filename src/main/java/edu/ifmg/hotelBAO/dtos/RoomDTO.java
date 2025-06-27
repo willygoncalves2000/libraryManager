@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 
 public class RoomDTO {
     private Long id;
+    private String name;
     private String description;
     private BigDecimal price;
     private String imageUrl;
@@ -13,8 +14,9 @@ public class RoomDTO {
     public RoomDTO() {
     }
 
-    public RoomDTO(Long id, String description, BigDecimal price, String imageUrl) {
+    public RoomDTO(Long id, String name, String description, BigDecimal price, String imageUrl) {
         this.id = id;
+        this.name = name;
         this.description = description;
         this.price = price;
         this.imageUrl = imageUrl;
@@ -22,6 +24,7 @@ public class RoomDTO {
 
     public RoomDTO(Room entity) {
         this.id = entity.getId();
+        this.name = entity.getName();
         this.description = entity.getDescription();
         this.price = entity.getPrice();
         this.imageUrl = entity.getImageUrl();
@@ -57,5 +60,13 @@ public class RoomDTO {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

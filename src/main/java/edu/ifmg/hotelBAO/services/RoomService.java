@@ -8,6 +8,8 @@ import edu.ifmg.hotelBAO.services.exceptions.ResourceNotFound;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,15 +23,17 @@ public class RoomService {
     private RoomRepository repository;
 
     @Transactional(readOnly = true)
-    public List<RoomDTO> findAll() {
-        List<Room> list = repository.findAll();
-        return list.stream().map(x -> new RoomDTO(x)).collect(Collectors.toList());
+    public Page<RoomDTO> findAll(Pageable pageable) {
+        Page<Room> rooms = repository.findAll(pageable);
+        return rooms.map(room -> new RoomDTO(room));
+        //return list.stream().map(x -> new RoomDTO(x)).collect(Collectors.toList());
     }
 
     @Transactional
     public RoomDTO insert(RoomDTO dto) {
         Room entity = new Room();
         entity.setDescription(dto.getDescription());
+        entity.setName(dto.getName());
         entity.setPrice(dto.getPrice());
         entity.setImageUrl(dto.getImageUrl());
         entity = repository.save(entity);
@@ -41,6 +45,7 @@ public class RoomService {
         try {
             Room entity = repository.getReferenceById(id);
             entity.setDescription(dto.getDescription());
+            entity.setName(dto.getName());
             entity.setPrice(dto.getPrice());
             entity.setImageUrl(dto.getImageUrl());
             entity = repository.save(entity);

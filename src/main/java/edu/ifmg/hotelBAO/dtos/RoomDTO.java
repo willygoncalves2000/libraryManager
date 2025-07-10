@@ -1,10 +1,11 @@
 package edu.ifmg.hotelBAO.dtos;
 
 import edu.ifmg.hotelBAO.entities.Room;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.math.BigDecimal;
 
-public class RoomDTO {
+public class RoomDTO extends RepresentationModel<RoomDTO> {
     private Long id;
     private String name;
     private String description;

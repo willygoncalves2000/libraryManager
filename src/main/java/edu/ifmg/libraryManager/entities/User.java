@@ -23,14 +23,6 @@ public class User implements UserDetails {
     private String login;
     private String phone;
 
-    @OneToMany(mappedBy = "user")
-    @JsonIgnore // evita loop ao serializar o UserDTO
-    private List<Stay> stays = new ArrayList<>();
-
-
-
-
-
     // Um usuário pode ter vários empréstimos
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Loan> loans = new HashSet<>();

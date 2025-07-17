@@ -1,12 +1,7 @@
 package edu.ifmg.libraryManager.services;
 
-import edu.ifmg.libraryManager.dtos.StayInvoiceDTO;
-import edu.ifmg.libraryManager.dtos.StayTotalDTO;
-import edu.ifmg.libraryManager.entities.Room;
-import edu.ifmg.libraryManager.entities.Stay;
 import edu.ifmg.libraryManager.entities.User;
 
-import edu.ifmg.libraryManager.repository.StayRepository;
 import edu.ifmg.libraryManager.repository.UserRepository;
 import edu.ifmg.libraryManager.services.exceptions.ResourceNotFound;
 import org.junit.jupiter.api.BeforeEach;

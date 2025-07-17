@@ -1,8 +1,5 @@
 package edu.ifmg.libraryManager.util;
 
-import edu.ifmg.libraryManager.dtos.RoomDTO;
-import edu.ifmg.libraryManager.entities.Room;
-
 import java.math.BigDecimal;
 
 public class Factory {

@@ -1,7 +1,5 @@
 package edu.ifmg.libraryManager.services;
 
-import edu.ifmg.libraryManager.entities.Room;
-import edu.ifmg.libraryManager.repository.RoomRepository;
 import edu.ifmg.libraryManager.services.exceptions.ResourceNotFound;
 import edu.ifmg.libraryManager.util.Factory;
 import org.junit.jupiter.api.Assertions;

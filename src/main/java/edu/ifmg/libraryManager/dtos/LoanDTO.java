@@ -1,11 +1,10 @@
 package edu.ifmg.libraryManager.dtos;
 
 import edu.ifmg.libraryManager.entities.Loan;
-import org.springframework.hateoas.RepresentationModel;
 
 import java.time.LocalDate;
 
-public class LoanDTO extends RepresentationModel<LoanDTO> {
+public class LoanDTO {
     private Long id;
     private Long userId;
     private Long bookId;

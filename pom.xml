@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>edu.ifmg</groupId>
-	<artifactId>hotelBAO</artifactId>
+	<artifactId>libraryManager</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>hotelBAO</name>
 	<description>Demo project for Spring Boot</description>
